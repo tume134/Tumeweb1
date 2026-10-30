@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TUME | Digital Space</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080b12;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, #0066ff22, transparent 35%),
+        radial-gradient(circle at 80% 70%, #8a00ff22, transparent 35%);
+    z-index: -1;
+}
+
+/* NAVBAR */
+
+nav {
+    width: 100%;
+    padding: 2% 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background: #080b12cc;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #ffffff12;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00c8ff;
+    letter-spacing: 3px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #00c8ff;
+}
+
+.menu {
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 15% 8% 8%;
+}
+
+.tag {
+    color: #00c8ff;
+    border: 1px solid #00c8ff55;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 12px;
+    margin-bottom: 25px;
+    background: #00c8ff0d;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    line-height: 1.1;
+    letter-spacing: -3px;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #00c8ff, #8b5cf6);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: #888;
+    max-width: 550px;
+    line-height: 1.8;
+    margin: 25px 0;
+}
+
+.typing {
+    color: #00c8ff;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.primary {
+    background: #00c8ff;
+    color: #080b12;
+}
+
+.secondary {
+    border: 1px solid #ffffff30;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #00c8ff44;
+}
+
+/* SECTION */
+
+section {
+    padding: 100px 8%;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.section-desc {
+    color: #888;
+    margin-bottom: 40px;
+}
+
+/* ABOUT */
+
+.about {
+    background: #ffffff05;
+    border-top: 1px solid #ffffff10;
+    border-bottom: 1px solid #ffffff10;
+}
+
+.about-box {
+    background: #101622;
+    border: 1px solid #ffffff12;
+    border-radius: 15px;
+    padding: 35px;
+    line-height: 2;
+    color: #aaa;
+}
+
+/* PROJECTS */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #101622;
+    border: 1px solid #ffffff12;
+    padding: 30px;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #00c8ff88;
+    box-shadow: 0 10px 40px #00c8ff0c;
+}
+
+.card .number {
+    color: #00c8ff;
+    font-size: 13px;
+}
+
+.card h3 {
+    margin: 20px 0 10px;
+}
+
+.card p {
+    color: #888;
+    line-height: 1.7;
+    font-size: 13px;
+}
+
+/* SKILLS */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill {
+    background: #111b29;
+    border: 1px solid #00c8ff33;
+    color: #00c8ff;
+    padding: 12px 20px;
+    border-radius: 8px;
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+    background: #ffffff05;
+}
+
+.contact p {
+    color: #888;
+    margin: 20px 0 30px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #555;
+    border-top: 1px solid #ffffff10;
+    font-size: 12px;
+}
+
+/* ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .8s;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width: 650px) {
+    nav {
+        padding: 5%;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #101622;
+        padding: 25px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .hero {
+        padding-top: 35%;
+    }
+
+    section {
+        padding: 75px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">TUME.</div>
+
+    <ul id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+</nav>
+
+<!-- HOME -->
+
+<div class="hero" id="home">
+
+    <div class="tag">● SYSTEM ONLINE</div>
+
+    <h1>
+        BUILDING<br>
+        <span class="gradient">DIGITAL</span>
+        FUTURE.
+    </h1>
+
+    <p>
+        Welcome to my digital space.
+        Exploring technology, programming,
+        and creating something extraordinary.
+    </p>
+
+    <div class="typing">
+        <span id="typing"></span>
+    </div>
+
+    <br>
+
+    <div class="buttons">
+        <a href="#projects" class="btn primary">
+            Explore Projects ↗
+        </a>
+
+        <a href="#about" class="btn secondary">
+            About Me
+        </a>
+    </div>
+
+</div>
+
+<!-- ABOUT -->
+
+<section class="about reveal" id="about">
+
+    <h2 class="section-title">
+        About <span class="gradient">Me.</span>
+    </h2>
+
+    <p class="section-desc">
+        A little introduction.
+    </p>
+
+    <div class="about-box">
+        Hello! I'm a technology enthusiast who
+        loves programming, web development,
+        and exploring new things.
+
+        <br>
+
+        My goal is to build useful digital
+        products and turn ideas into reality.
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <h2 class="section-title reveal">
+        My <span class="gradient">Projects.</span>
+    </h2>
+
+    <p class="section-desc reveal">
+        Some things I've been working on.
+    </p>
+
+    <div class="projects">
+
+        <div class="card reveal">
+            <span class="number">PROJECT_01</span>
+            <h3>Web Development</h3>
+            <p>
+                Creating modern websites
+                with HTML, CSS, and JavaScript.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <span class="number">PROJECT_02</span>
+            <h3>Python Tools</h3>
+            <p>
+                Building useful tools,
+                automation, and Python modules.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <span class="number">PROJECT_03</span>
+            <h3>Cyber Security</h3>
+            <p>
+                Exploring digital security
+                and defensive technologies.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section class="about reveal">
+
+    <h2 class="section-title">
+        My <span class="gradient">Skills.</span>
+    </h2>
+
+    <p class="section-desc">
+        Technologies I explore.
+    </p>
+
+    <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Python</div>
+        <div class="skill">Flask</div>
+        <div class="skill">GitHub</div>
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact reveal" id="contact">
+
+</section>
+
+<footer>
+    © 2026 TUME. All Rights Reserved.
+    <br><br>
+    DESIGNED FOR THE DIGITAL WORLD.
+</footer>
+
+<script>
+
+// MOBILE MENU
+
+function toggleMenu() {
+    document.getElementById("navLinks")
+        .classList.toggle("show");
+}
+
+// CLOSE MENU
+
+document.querySelectorAll("#navLinks a")
+.forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navLinks")
+            .classList.remove("show");
+    });
+});
+
+// TYPING ANIMATION
+
+const texts = [
+    "Web Developer.",
+    "Python Programmer.",
+    "Tech Enthusiast.",
+    "Digital Creator."
+];
+
+let index = 0;
+let char = 0;
+let deleting = false;
+
+function typeEffect() {
+
+    const current = texts[index];
+
+    document.getElementById("typing")
+        .textContent = current.substring(0, char);
+
+    if (!deleting) {
+        char++;
+
+        if (char > current.length) {
+            deleting = true;
+            setTimeout(typeEffect, 1200);
+            return;
+        }
+
+    } else {
+        char--;
+
+        if (char < 0) {
+            deleting = false;
+            index = (index + 1) % texts.length;
+            char = 0;
+        }
+    }
+
+    setTimeout(typeEffect, deleting ? 45 : 90);
+}
+
+typeEffect();
+
+// SCROLL ANIMATION
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll(".reveal")
+.forEach(element => observer.observe(element));
+
+</script>
+
+</body>
+      </html>
